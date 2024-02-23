@@ -580,7 +580,6 @@
     "__type__": "d87b8fuME5FIZOJtSiC5Rdu",
     "_name": "",
     "_objFlags": 0,
-    "__editorExtras__": {},
     "node": {
       "__id__": 17
     },
@@ -684,6 +683,7 @@
       "z": 0
     },
     "_distance": 0,
+    "_planeBias": 1,
     "_shadowColor": {
       "__type__": "cc.Color",
       "r": 76,
