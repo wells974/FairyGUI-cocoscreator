@@ -407,7 +407,7 @@ declare module 'fairygui-cc/GRoot' {
         getTouchPosition(touchId?: number): Vec2;
         get touchTarget(): GObject;
         get inputProcessor(): InputProcessor;
-        showWindow(win: Window): void;
+        showWindow(win: Window, parent?: GComponent): void;
         hideWindow(win: Window): void;
         hideWindowImmediately(win: Window): void;
         bringToFront(win: Window): void;

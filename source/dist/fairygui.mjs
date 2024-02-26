@@ -12031,8 +12031,13 @@ class GRoot extends GComponent {
     get inputProcessor() {
         return this._inputProcessor;
     }
-    showWindow(win) {
-        this.addChild(win);
+    showWindow(win, parent) {
+        if (parent) {
+            parent.addChild(win);
+        }
+        else {
+            this.addChild(win);
+        }
         win.requestFocus();
         if (win.x > this.width)
             win.x = this.width - win.width;
@@ -12050,6 +12055,8 @@ class GRoot extends GComponent {
     hideWindowImmediately(win) {
         if (win.parent == this)
             this.removeChild(win);
+        else
+            win.parent.removeChild(win);
         this.adjustModalLayer();
     }
     bringToFront(win) {

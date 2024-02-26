@@ -90,8 +90,12 @@ export class GRoot extends GComponent {
         return this._inputProcessor;
     }
 
-    public showWindow(win: Window): void {
-        this.addChild(win);
+    public showWindow(win: Window, parent?: GComponent): void {
+        if (parent) {
+            parent.addChild(win);
+        } else {
+            this.addChild(win);
+        }
         win.requestFocus();
 
         if (win.x > this.width)
@@ -114,6 +118,8 @@ export class GRoot extends GComponent {
     public hideWindowImmediately(win: Window): void {
         if (win.parent == this)
             this.removeChild(win);
+        else
+            win.parent.removeChild(win);
 
         this.adjustModalLayer();
     }
@@ -237,7 +243,7 @@ export class GRoot extends GComponent {
 
     public removeChildAt(index: number, dispose?: boolean): GObject {
         let ret = super.removeChildAt(index, dispose);
-        
+
         if(dispose) {
             if(ret == this._modalWaitPane) {
                 this._modalWaitPane = null;
